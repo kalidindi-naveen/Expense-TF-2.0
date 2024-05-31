@@ -25,3 +25,15 @@ resource "aws_ssm_parameter" "bastion-sg" {
   type  = "String"
   value = module.sg-made-easy-bastion.sg_id
 }
+
+resource "aws_ssm_parameter" "vpn-sg" {
+  name  = "/${var.project_name}/${var.environment}/vpn_sg_id"
+  type  = "String"
+  value = module.sg-made-easy-vpn.sg_id
+}
+
+resource "aws_ssm_parameter" "app_alb-sg" {
+  name  = "/${var.project_name}/${var.environment}/app_alb_sg_id"
+  type  = "String"
+  value = module.sg-made-easy-app_alb.sg_id
+}
