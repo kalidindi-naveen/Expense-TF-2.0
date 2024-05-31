@@ -1,0 +1,19 @@
+After Creating Instance 
+
+ssh -i /root/.ssh/openvpn openvpnas@xx.xx.xx.xx
+accept agreement: yes, remaining all Enter
+configure password: Abc1234
+
+Login to Admin UI
+    username: openvpn
+    password: Abc1234
+
+VPN Settings:
+    yes: client traffic be routed through internet
+    yes: use client specific DNS
+    DNS Server's:: 8.8.8.8,8.8.4.4 // Google DNS Servers
+    save settings & update running server 
+
+VPN Client:
+    Download from internet
+    provide client URL, username & password, import

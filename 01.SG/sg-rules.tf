@@ -103,10 +103,10 @@ resource "aws_security_group_rule" "bastion_public" {
 
 ### App ALB
 resource "aws_security_group_rule" "app_alb-vpn" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
   source_security_group_id = module.sg-made-easy-vpn.sg_id
-  security_group_id = module.sg-made-easy-app_alb.sg_id
+  security_group_id        = module.sg-made-easy-app_alb.sg_id
 }
