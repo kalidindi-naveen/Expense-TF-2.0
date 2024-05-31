@@ -1,0 +1,3 @@
+We are Using PULL Based Ansible
+    no need of ansible server
+    we will pull ansible playbooks directly from github

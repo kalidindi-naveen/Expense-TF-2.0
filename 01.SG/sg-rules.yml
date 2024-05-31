@@ -1,0 +1,68 @@
+- name: SG Rules
+  sg:
+  - expense-dev-db
+  - expense-dev-be
+  - expense-dev-fe
+  - expense-dev-bastion
+  - expense-dev-app-alb
+  - expense-dev-vpn
+
+  expense-dev-vpn:
+  - name:  vpn_public
+    desc: vpn to public 
+    source: public 
+    port: 943, 443, 22, 1194
+
+  expense-dev-app-alb-vpn:
+  - name: app_alb_vpn
+    desc: app_alb to vpn 
+    source: vpn 
+    port: 80
+
+  db:
+  - name: db_be
+    desc: db to be 
+    source: be 
+    port: 3306
+  - name: db_bastion
+    desc: db to bastion
+    source: bastion
+    port: 3306
+  - name: db_vpn
+    desc: db to vpn 
+    source: vpn 
+    port: 3306
+
+  be:
+  - name: be_app_alb
+    desc: be to app_alb
+    source: app_alb
+    port: 8080
+  - name: be_bastion 
+    desc: be to bastion 
+    source: bastion 
+    port: 22 
+  - name: be_vpn_ssh
+    desc: be to vpn using ssh
+    source: vpn 
+    port: 22
+  - name: be_vpn_http
+    desc: be to vpn using http
+    source: vpn 
+    port: 8080
+
+  fe:
+  - name: fe_public
+    desc: be to public
+    source: public
+    port: 80
+  - name: fe_bastion 
+    desc: fe to bastion 
+    source: bastion 
+    port: 22 
+
+  bastion:
+  - name: bastion_public
+    desc: bastion to public
+    source: public # Ideally we give home IP Address
+    port: 22
