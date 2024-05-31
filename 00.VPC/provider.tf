@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "step-into-iot-workspacecloud"
+    bucket         = "step-into-iot-workspace-cloud"
     key            = "step-into-iot-workspace-cloud-vpc-001"
     region         = "us-east-1"
-    dynamodb_table = "cloud-tbl-001"
+    dynamodb_table = "step-into-iot-workspace-cloud"
   }
 }
 
