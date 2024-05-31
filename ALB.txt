@@ -1,0 +1,20 @@
+Load Balancing if there are multiple servers...
+AutoScaling based on traffic
+
+ALB
+Listener
+Rules
+Target Groups
+Health Checks
+
+Rule's:
+step-into-iot.cloud -- hme page
+step-into-iot.cloud/api/cart -- path is /api/cart -- cart target group
+step-into-iot.cloud/api/payment -- path is /api/payment -- payment target group
+m.facebook -- mobile code
+facebook.com -- website code
+
+cart.step-into-iot.cloud  -- host path
+step-into-iot.cloud/cart  -- context path
+
+Defalt Rule is mandatory if any Rule doesn't matches then it execute

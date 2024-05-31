@@ -1,0 +1,21 @@
+Project Architecture -- Changes Rare
+Application Architecture -- Subjected to Frequent Change
+
+Ex:-
+SG -- Rare
+SG Rule -- Frequent
+
+EC2, AMI, Launch Template -- Frequent
+
+Expense -- Project
+FE,BE,DB -- Components
+
+expense-infra-dev
+    db-dev.step-int-iot.cloud
+    be-dev.step-into-iot.cloud 
+    fe-dev.step-into-iot.cloud 
+
+expense-infra-prod
+    db-prod.step-int-iot.cloud
+    be-prod.step-into-iot.cloud 
+    fe-prod.step-into-iot.cloud
