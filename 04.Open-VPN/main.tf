@@ -1,13 +1,6 @@
-resource "aws_key_pair" "vpn" {
-  key_name   = "vpn"
-  public_key = file("/root/.ssh/openvpn.pub")
-  # ~ means windows home directory
-}
-
-
 module "vpn-made-easy" {
   source   = "terraform-aws-modules/ec2-instance/aws"
-  key_name = aws_key_pair.vpn.key_name
+  key_name = "vpn-001"
   name     = "${var.project_name}-${var.environment}-vpn"
 
   instance_type               = "t3.micro"
