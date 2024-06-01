@@ -27,12 +27,8 @@ resource "null_resource" "this" {
     host     = module.be-made-easy.private_ip
   }
   provisioner "file" {
-    source      = "${var.common_tags.Component}.sh"
-    destination = "/tmp/${var.common_tags.Component}.sh"
-    # inline = [
-    #     "chmod +x /tmp/${var.common_tags.Component}.sh",
-    #     "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment}"
-    # ]
+    source      = "backend.sh"
+    destination = "/tmp/backend.sh"
   }
 }
 
