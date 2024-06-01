@@ -11,6 +11,16 @@ Remote Provisioner
 Execute Scripts inside Remote Servers (with help of null_resource)
 Note: null_resource will not Create any resource (it will used by Provisioner's)
 
-Create Instance First
-Connect to Server using null_resource and remote_exec
-copy script into instance
+Step's
+------
+1. Create Instance First
+2. Connect to Server using null_resource and remote_exec
+3. copy script into instance
+4. run ansible configuration
+5. stop EC2
+6. take AMI 
+7. delete Instance 
+8. create target group 
+9. create backend launch template
+10. autoscalling & policy
+11. listener rule -- 80
