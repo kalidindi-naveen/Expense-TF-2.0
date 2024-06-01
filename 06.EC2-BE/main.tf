@@ -26,6 +26,7 @@ resource "null_resource" "this" {
     password = "DevOps321"
     host     = module.be-made-easy.private_ip
   }
+  
   provisioner "file" {
     source      = "${var.common_tags.Component}.sh"
     destination = "/tmp/${var.common_tags.Component}.sh"
