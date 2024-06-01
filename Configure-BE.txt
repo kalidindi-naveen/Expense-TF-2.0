@@ -1,0 +1,16 @@
+user Data
+---------
+-- once EC2 instance created, aws will run userdata script.
+
+Disadvantages:
+    - we have to login inside instance and check logs.
+    - once userdata is changed, AWS will not update EC2 (delete EC2 & Create Again)
+
+Remote Provisioner 
+-----------------
+Execute Scripts inside Remote Servers (with help of null_resource)
+Note: null_resource will not Create any resource (it will used by Provisioner's)
+
+Create Instance First
+Connect to Server using null_resource and remote_exec
+copy script into instance
