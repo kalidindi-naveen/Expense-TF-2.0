@@ -3,7 +3,7 @@ module "vpn-made-easy" {
   key_name = "vpn-001"
   name     = "${var.project_name}-${var.environment}-vpn"
 
-  instance_type               = "t3.micro"
+  instance_type               = "t2.micro"
   associate_public_ip_address = true
   vpc_security_group_ids      = [data.aws_ssm_parameter.vpn_sg_id.value]
   subnet_id                   = element(split(",", data.aws_ssm_parameter.pub_subnet_ids.value), 0)
