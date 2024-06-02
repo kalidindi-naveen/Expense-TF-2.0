@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket         = "step-into-iot-workspace-cloud"
-    key            = "step-into-iot-workspace-cloud-alb-001"
+    key            = "step-into-iot-workspace-cloud-web-alb-001"
     region         = "us-east-1"
     dynamodb_table = "step-into-iot-workspace-cloud"
   }
