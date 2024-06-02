@@ -40,7 +40,7 @@ resource "null_resource" "this" {
   }
 }
 
-resource "aws_ec2_instance_state" "stop-be" {
+resource "aws_ec2_instance_state" "stop-fe" {
   instance_id = module.fe-made-easy.id
   state       = "stopped"
   # stop the serever only when null resource provisioning is completed
@@ -174,7 +174,7 @@ resource "aws_lb_listener_rule" "fe" {
 
   condition {
     host_header {
-      values = ["be.app-${var.environment}.${var.zone_name}"]
+      values = ["web-${var.environment}.${var.zone_name}"]
     }
   }
 }
