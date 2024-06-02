@@ -12,7 +12,7 @@ module "fe-made-easy" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.project_name}-${var.environment}-be"
+      Name = "${var.project_name}-${var.environment}-fe"
   })
 }
 
