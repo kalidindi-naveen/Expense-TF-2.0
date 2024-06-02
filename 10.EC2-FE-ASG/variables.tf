@@ -18,3 +18,7 @@ variable "common_tags" {
     SERVER      = "fe"
   }
 }
+
+variable "zone_name" {
+  default = "step-into-iot.cloud"
+}
