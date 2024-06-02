@@ -4,7 +4,7 @@ module "fe-made-easy" {
   name = "${var.project_name}-${var.environment}-fe"
   ami  = data.aws_ami.ami_id.id
 
-  instance_type          = "t2.micro"
+  instance_type          = "t2.small"
   monitoring             = true
   vpc_security_group_ids = [data.aws_ssm_parameter.fe_sg_id.value]
   subnet_id              = element(split(",", data.aws_ssm_parameter.pub_subnet_ids.value), 0)
@@ -92,7 +92,7 @@ resource "aws_launch_template" "fe" {
 
   image_id                             = aws_ami_from_instance.stop-fe.id
   instance_initiated_shutdown_behavior = "terminate"
-  instance_type                        = "t3.micro"
+  instance_type                        = "t2.micro"
   update_default_version               = true # sets the latest version to default
 
   vpc_security_group_ids = [data.aws_ssm_parameter.fe_sg_id.value]
