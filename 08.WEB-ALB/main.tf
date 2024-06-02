@@ -2,7 +2,7 @@ resource "aws_lb" "web_alb" {
   name               = "${var.project_name}-${var.environment}-web-alb"
   internal           = true
   load_balancer_type = "application"
-  security_groups    = [data.aws_ssm_parameter.web_alb_sg_id.value]
+  security_groups    = [data.aws_ssm_parameter.web_app_alb_sg_id.value]
   subnets            = split(",", data.aws_ssm_parameter.pri_subnet_ids.value)
 
   enable_deletion_protection = false
