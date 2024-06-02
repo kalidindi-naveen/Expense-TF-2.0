@@ -53,6 +53,17 @@ module "sg-made-easy-app_alb" {
   common_tags    = var.common_tags
 }
 
+module "sg-made-easy-web_app_alb" {
+  source         = "git::https://github.com/kalidindi-naveen/Learn-TF-Modules//10.Terraform-AWS-SG?ref=main"
+  project_name   = var.project_name
+  environment    = var.environment
+  sg_name        = "web_app_alb"
+  vpc_id         = data.aws_ssm_parameter.this.value
+  sg_description = "SG For web_app_alb"
+  ingress        = var.ingress
+  common_tags    = var.common_tags
+}
+
 module "sg-made-easy-vpn" {
   source         = "git::https://github.com/kalidindi-naveen/Learn-TF-Modules//10.Terraform-AWS-SG?ref=main"
   project_name   = var.project_name

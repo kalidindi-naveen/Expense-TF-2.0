@@ -37,3 +37,9 @@ resource "aws_ssm_parameter" "app_alb-sg" {
   type  = "String"
   value = module.sg-made-easy-app_alb.sg_id
 }
+
+resource "aws_ssm_parameter" "web_app_alb-sg" {
+  name  = "/${var.project_name}/${var.environment}/web_app_alb_sg_id"
+  type  = "String"
+  value = module.sg-made-easy-web_app_alb.sg_id
+}

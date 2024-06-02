@@ -6,6 +6,17 @@
   - expense-dev-bastion
   - expense-dev-app-alb
   - expense-dev-vpn
+  - expense-dev-web-app-alb
+
+  expense-dev-web-app-alb:
+  - name: web_app_alb_public
+    desc: web_app_alb to public 
+    source: public
+    port: 80
+  - name: web_app_alb_https
+    desc: web_app_alb to public https 
+    source: public 
+    port: 443
 
   expense-dev-vpn:
   - name:  vpn_public
@@ -60,6 +71,10 @@
     desc: fe to bastion 
     source: bastion 
     port: 22 
+  - name: fe_web_app_alb 
+    desc: fe to web_app_alb
+    source: web_app_alb
+    port: 80
 
   bastion:
   - name: bastion_public
