@@ -41,7 +41,7 @@ resource "null_resource" "this" {
 }
 
 resource "aws_ec2_instance_state" "stop-be" {
-  instance_id = module.be-made-easy.id
+  instance_id = module.fe-made-easy.id
   state       = "stopped"
   # stop the serever only when null resource provisioning is completed
   depends_on = [null_resource.this]
