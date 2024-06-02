@@ -10,6 +10,9 @@ data "aws_ssm_parameter" "pri_subnet_ids" {
   name = "/${var.project_name}/${var.environment}/pri_subnet_ids"
 }
 
+data "aws_ssm_parameter" "app_alb_listener_arn" {
+  name = "/${var.project_name}/${var.environment}/app_alb_listener_arn"
+}
 data "aws_ami" "ami_id" {
   most_recent = true
   owners      = ["973714476881"]
