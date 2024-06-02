@@ -62,7 +62,7 @@ resource "null_resource" "frontend_delete" {
     type     = "ssh"
     user     = "ec2-user"
     password = "DevOps321"
-    host     = module.fe-made-easy.public_ip
+    host     = module.fe-made-easy.private_ip
   }
 
   provisioner "local-exec" {
