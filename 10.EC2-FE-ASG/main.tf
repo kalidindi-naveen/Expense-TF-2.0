@@ -24,12 +24,12 @@ resource "null_resource" "this" {
     type     = "ssh"
     user     = "ec2-user"
     password = "DevOps321"
-    host     = module.fe-made-easy.public_ip
+    host     = module.fe-made-easy.private_ip
   }
 
   provisioner "file" {
-    source      = "frontend.sh"
-    destination = "/tmp/frontend.sh"
+    source      = "${var.common_tags.Component}.sh"
+    destination = "/tmp/${var.common_tags.Component}.sh"
   }
 
   provisioner "remote-exec" {
