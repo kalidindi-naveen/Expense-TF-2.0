@@ -63,6 +63,34 @@ resource "aws_security_group_rule" "be-bastion" {
   security_group_id        = module.sg-made-easy-be.sg_id
 }
 
+### App ALB
+resource "aws_security_group_rule" "app_alb-vpn" {
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
+  source_security_group_id = module.sg-made-easy-vpn.sg_id
+  security_group_id        = module.sg-made-easy-app_alb.sg_id
+}
+
+resource "aws_security_group_rule" "app_alb-bastion" {
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
+  source_security_group_id = module.sg-made-easy-bastion.sg_id
+  security_group_id        = module.sg-made-easy-app_alb.sg_id
+}
+
+resource "aws_security_group_rule" "app_alb-fe" {
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
+  source_security_group_id = module.sg-made-easy-fe.sg_id
+  security_group_id        = module.sg-made-easy-app_alb.sg_id
+}
+
 ### FE
 resource "aws_security_group_rule" "fe-public" {
   type              = "ingress"
@@ -73,12 +101,12 @@ resource "aws_security_group_rule" "fe-public" {
   security_group_id = module.sg-made-easy-fe.sg_id
 }
 
-resource "aws_security_group_rule" "fe-be" {
+resource "aws_security_group_rule" "fe-vpn" {
   type                     = "ingress"
-  from_port                = 8080
-  to_port                  = 8080
+  from_port                = 80
+  to_port                  = 80
   protocol                 = "tcp"
-  source_security_group_id = module.sg-made-easy-be.sg_id
+  source_security_group_id = module.sg-made-easy-vpn.sg_id
   security_group_id        = module.sg-made-easy-fe.sg_id
 }
 
@@ -110,15 +138,6 @@ resource "aws_security_group_rule" "bastion_public" {
   security_group_id = module.sg-made-easy-bastion.sg_id
 }
 
-### App ALB
-resource "aws_security_group_rule" "app_alb-vpn" {
-  type                     = "ingress"
-  from_port                = 80
-  to_port                  = 80
-  protocol                 = "tcp"
-  source_security_group_id = module.sg-made-easy-vpn.sg_id
-  security_group_id        = module.sg-made-easy-app_alb.sg_id
-}
 
 ### Web App ALB
 resource "aws_security_group_rule" "web_app_alb-public_https" {
@@ -145,5 +164,14 @@ resource "aws_security_group_rule" "web_app_alb-vpn" {
   to_port                  = 80
   protocol                 = "tcp"
   source_security_group_id = module.sg-made-easy-vpn.sg_id
+  security_group_id        = module.sg-made-easy-web_app_alb.sg_id
+}
+
+resource "aws_security_group_rule" "web_app_alb-bastion" {
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
+  source_security_group_id = module.sg-made-easy-bastion.sg_id
   security_group_id        = module.sg-made-easy-web_app_alb.sg_id
 }

@@ -8,28 +8,6 @@
   - expense-dev-vpn
   - expense-dev-web-app-alb
 
-  expense-dev-web-app-alb:
-  - name: web_app_alb_public
-    desc: web_app_alb to public 
-    source: public
-    port: 80
-  - name: web_app_alb_https
-    desc: web_app_alb to public https 
-    source: public 
-    port: 443
-
-  expense-dev-vpn:
-  - name:  vpn_public
-    desc: vpn to public 
-    source: public 
-    port: 943, 443, 22, 1194
-
-  expense-dev-app-alb-vpn:
-  - name: app_alb_vpn
-    desc: app_alb to vpn 
-    source: vpn 
-    port: 80
-
   db:
   - name: db_be
     desc: db to be 
@@ -62,6 +40,20 @@
     source: vpn 
     port: 8080
 
+  app-alb:
+  - name: app_alb_vpn
+    desc: app_alb to vpn 
+    source: vpn 
+    port: 80
+  - name: app_alb_bastion
+    desc: app_alb to bastion 
+    source: bastion 
+    port: 80
+  - name: app_alb_FE
+    desc: app_alb to FE 
+    source: FE 
+    port: 80
+
   fe:
   - name: fe_public
     desc: be to public
@@ -75,6 +67,35 @@
     desc: fe to web_app_alb
     source: web_app_alb
     port: 80
+  - name: fe_vpn
+    desc: fe to vpn 
+    source: vpn 
+    port: 80
+  
+
+  web-app-alb:
+  - name: web_app_alb_public
+    desc: web_app_alb to public 
+    source: public
+    port: 80
+  - name: web_app_alb_https
+    desc: web_app_alb to public https 
+    source: public 
+    port: 443
+  - name: web_app_alb_bastion 
+    desc: web_app_alb to bastion 
+    source: bastion 
+    port: 80 
+  - name: web_app_alb_vpn
+    desc: web_app_alb to vpn 
+    source: vpn 
+    port: 80
+
+  vpn:
+  - name:  vpn_public
+    desc: vpn to public 
+    source: public 
+    port: 943, 443, 22, 1194
 
   bastion:
   - name: bastion_public
