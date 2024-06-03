@@ -92,15 +92,6 @@ resource "aws_security_group_rule" "app_alb-fe" {
 }
 
 ### FE
-resource "aws_security_group_rule" "fe-public" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = module.sg-made-easy-fe.sg_id
-}
-
 resource "aws_security_group_rule" "fe-vpn" {
   type                     = "ingress"
   from_port                = 22
