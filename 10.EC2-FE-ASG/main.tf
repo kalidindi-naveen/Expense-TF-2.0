@@ -34,9 +34,10 @@ resource "null_resource" "this" {
 
   provisioner "remote-exec" {
     inline = [
-      "ls -l /tmp/${var.common_tags.Component}.sh",    # Check if the file exists and its permissions
       "chmod +x /tmp/${var.common_tags.Component}.sh",
-      "ls -l /tmp/${var.common_tags.Component}.sh",    # Verify the file is executable
+      "pwd"
+      "ls -al"
+      "echo ${var.common_tags.SERVER} ${var.environment}"
       "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.SERVER} ${var.environment}"
     ]
   }
