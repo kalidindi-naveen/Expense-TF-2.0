@@ -35,9 +35,6 @@ resource "null_resource" "this" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/${var.common_tags.Component}.sh",
-      "pwd"
-      "ls -al"
-      "echo ${var.common_tags.SERVER} ${var.environment}"
       "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.SERVER} ${var.environment}"
     ]
   }
