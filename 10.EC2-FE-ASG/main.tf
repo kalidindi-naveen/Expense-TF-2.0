@@ -1,10 +1,10 @@
 module "fe-made-easy" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "${var.project_name}-${var.environment}-fe"
+  name = "${var.project_name}-${var.environment}-${var.common_tags.SERVER}"
   ami  = data.aws_ami.ami_id.id
 
-  instance_type          = "t2.small"
+  instance_type          = "t2.micro"
   monitoring             = true
   vpc_security_group_ids = [data.aws_ssm_parameter.fe_sg_id.value]
   subnet_id              = element(split(",", data.aws_ssm_parameter.pub_subnet_ids.value), 0)
@@ -12,7 +12,7 @@ module "fe-made-easy" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.project_name}-${var.environment}-fe"
+      Name = "${var.project_name}-${var.environment}-${var.common_tags.SERVER}"
   })
 }
 
@@ -53,16 +53,9 @@ resource "aws_ami_from_instance" "stop-fe" {
   depends_on         = [aws_ec2_instance_state.stop-fe]
 }
 
-resource "null_resource" "frontend_delete" {
+resource "null_resource" "fe_delete" {
   triggers = {
     instance_id = module.fe-made-easy.id
-  }
-
-  connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    password = "DevOps321"
-    host     = module.fe-made-easy.private_ip
   }
 
   provisioner "local-exec" {
