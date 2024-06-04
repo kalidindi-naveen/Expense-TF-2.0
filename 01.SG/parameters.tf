@@ -1,5 +1,5 @@
 data "aws_ssm_parameter" "this" {
-  name = "/expense/dev/vpc_id"
+  name = "/${var.project_name}/${var.environment}/vpc_id"
 }
 
 resource "aws_ssm_parameter" "db-sg" {

@@ -1,0 +1,9 @@
+Create EC2
+Configure EC2 using ansible-pull
+Stop EC2
+Create Image From EC2
+Delete EC2
+Create Target Group
+Create Launch Template
+Create ASG & ASG Policy
+Create Listner Rule
