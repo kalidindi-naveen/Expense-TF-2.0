@@ -67,16 +67,16 @@ resource "null_resource" "fe_delete" {
 
 resource "aws_lb_target_group" "fe" {
   name     = "${var.project_name}-${var.environment}-${var.common_tags.SERVER}"
-  port     = 8080
+  port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_ssm_parameter.vpc_id.value
   health_check {
-    path                = "/health"
-    port                = 8080
+    path                = "/"
+    port                = 80
     protocol            = "HTTP"
     healthy_threshold   = 2
     unhealthy_threshold = 2
-    matcher             = "200"
+    matcher             = "200-299"
   }
 }
 
