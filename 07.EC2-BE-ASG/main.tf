@@ -53,7 +53,7 @@ resource "aws_ami_from_instance" "stop-be" {
   depends_on         = [aws_ec2_instance_state.stop-be]
 }
 
-resource "null_resource" "backend_delete" {
+resource "null_resource" "be_delete" {
   triggers = {
     instance_id = module.be-made-easy.id
   }
