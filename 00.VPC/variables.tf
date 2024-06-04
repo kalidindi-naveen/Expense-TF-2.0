@@ -19,6 +19,10 @@ variable "common_tags" {
   }
 }
 
+variable "azs" {
+  default = ["us-east-1a", "us-east-1b"]
+}
+
 variable "cidr_block" {
   default = "192.168.0.0/16"
 }

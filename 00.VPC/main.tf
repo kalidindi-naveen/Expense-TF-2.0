@@ -9,4 +9,5 @@ module "vpc-made-easy" {
   private_subnet_cidrs  = var.private_subnet_cidrs
   database_subnet_cidrs = var.database_subnet_cidrs
   enable_peering        = var.enable_peering
+  azs                   = var.azs
 }
