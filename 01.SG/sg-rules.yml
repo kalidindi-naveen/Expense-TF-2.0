@@ -55,10 +55,6 @@
     port: 80
 
   fe:
-  - name: fe_public
-    desc: be to public
-    source: public
-    port: 80
   - name: fe_bastion 
     desc: fe to bastion 
     source: bastion 
