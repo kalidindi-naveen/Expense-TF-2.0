@@ -58,13 +58,6 @@ resource "null_resource" "backend_delete" {
     instance_id = module.be-made-easy.id
   }
 
-  connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    password = "DevOps321"
-    host     = module.be-made-easy.private_ip
-  }
-
   provisioner "local-exec" {
     command = "aws ec2 terminate-instances --instance-ids ${module.be-made-easy.id}"
   }
