@@ -1,0 +1,14 @@
+db-dev.step-int-iot.cloud 
+
+http://be.app-dev.step-into-iot.cloud/health
+http://be.app-dev.step-into-iot.cloud/transaction
+
+http://web-dev.step-into-iot.cloud/
+
+https://web-dev.step-into-iot.cloud/
+
+https://web-cdn.step-into-iot.cloud/
+
+Flow
+----
+CDN (https://web-cdn.step-into-iot.cloud/) -- FE LB(https://web-dev.step-into-iot.cloud/) -- FE TG(FE instance:80)(/api/) -- BE LB(http://be.app-dev.step-into-iot.cloud/) -- BE TG(xx.xx.xx.xx:8080) -- DB

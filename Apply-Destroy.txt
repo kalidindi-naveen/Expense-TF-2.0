@@ -4,16 +4,16 @@ for i in 05.Ansible/ 04.EC2-BE-FE/ 03.DB/ 02.Bastion/ 01.SG/ 00.VPC/; do cd $i; 
 
 Terraform Apply
 ---------------
-for i in 00.VPC/; do cd $i; terraform init; terraform apply -auto-approve; cd .. ; done
-
-for i in 01.SG/ 02.Bastion/ 03.DB/ 04.Open-VPN/ 05.ALB/; do cd $i; terraform init; terraform apply -auto-approve; cd .. ; done
-
-for i in 07.EC2-BE-ASG/ 08.ACM/ 09.WEB-ALB/ 10.EC2-FE-ASG/
-; do cd $i; terraform init; terraform apply -auto-approve; cd .. ; done
-
+for i in 00.VPC/ 01.SG/ 02.Bastion/ 03.DB/ 04.Open-VPN/ 05.ALB/; do cd $i; terraform init; terraform apply -auto-approve; cd .. ; done
+for i in 07.EC2-BE-ASG/ 08.ACM/ 09.WEB-ALB/ 10.EC2-FE-ASG/; do cd $i; terraform init; terraform apply -auto-approve; cd .. ; done
+--x--
+for i in 00.VPC/ 01.SG/ 02.Bastion/ 03.DB/ 04.Open-VPN/ 05.ALB/; do cd $i; terraform init; terraform apply -auto-approve; cd .. ; done
+for i in 07.EC2-BE-ASG/ 08.ACM/ 09.WEB-ALB/ 10.EC2-FE-ASG/ 11.CDN/; do cd $i; terraform init; terraform apply -auto-approve; cd .. ; done
 
 Terraform Destroy
 -----------------
 for i in 10.EC2-FE-ASG/ 09.WEB-ALB/ 08.ACM/ 07.EC2-BE-ASG/ ; do cd $i; terraform destroy -auto-approve; cd .. ; done
-
+for i in 05.ALB/ 04.Open-VPN/ 03.DB/ 02.Bastion/ 01.SG/ 00.VPC/; do cd $i; terraform destroy -auto-approve; cd .. ; done
+--x--
+for i in 11.CDN/ 10.EC2-FE-ASG/ 09.WEB-ALB/ 08.ACM/ 07.EC2-BE-ASG/ ; do cd $i; terraform destroy -auto-approve; cd .. ; done
 for i in 05.ALB/ 04.Open-VPN/ 03.DB/ 02.Bastion/ 01.SG/ 00.VPC/; do cd $i; terraform destroy -auto-approve; cd .. ; done
